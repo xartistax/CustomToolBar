@@ -7,12 +7,17 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+@available(iOS 17.0, *)
+struct Example: View {
+    @available(iOS 17.0.0, *)
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        CustomToolBar()
     }
 }
 
+@available(iOS 17.0, *)
 #Preview {
-    SwiftUIView()
+    
+        Example()
+   
 }

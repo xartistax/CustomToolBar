@@ -6,7 +6,7 @@
 
 CustomToolBar is a delightful and customizable toolbar SwiftUI package for your iOS app, bringing elegance and functionality to your user interface. 🚀
 
-## Features 🌟
+## Features 🌟 (ongoing process!) 
 
 - **Sleek Design:** Crafted with a sleek and modern design for an appealing UI.
 - **Flexible Customization:** Customize toolbar items to suit your app's aesthetics and functionality.
@@ -15,11 +15,4 @@ CustomToolBar is a delightful and customizable toolbar SwiftUI package for your 
 ## Usage 🛠️
 
 ```swift
-CustomToolBar(
-    toolBarContent: [
-        CustomToolBarItem(title: "Home", icon : "house"),
-        CustomToolBarItem(title: "Settings", icon : "line.3.horizontal.decrease.circle"),
-        CustomToolBarItem(title: "Profile", icon : "person"),
-        CustomToolBarItem(title: "Share", icon : "square.and.arrow.up")
-    ]
-)
+CustomToolBar()

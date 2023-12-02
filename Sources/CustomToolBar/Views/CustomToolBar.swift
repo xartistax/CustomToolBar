@@ -34,7 +34,12 @@ enum Tab: String, CaseIterable {
 
 public struct CustomToolBar: View {
     @State private var activTab: Tab = .home
+    @State private var tabShapePosition : CGPoint = .zero
     @Namespace private var animation
+    
+    init() {
+        UITabBar.appearance().isHidden = true
+    }
     
     @available(iOS 17.0.0, *)
     public var body: some View {
@@ -82,7 +87,8 @@ public struct CustomToolBar: View {
                         interactiveTint: inactiveTint,
                         tab: tab,
                         animation: animation,
-                        activeTab: $activTab
+                        activeTab: $activTab,
+                        position: $tabShapePosition
                     )
                 }
                 
@@ -90,7 +96,7 @@ public struct CustomToolBar: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
             .background(content: {
-                Rectangle()
+                TabShape(midpoint: tabShapePosition.x)
                     .fill(.white)
                     .ignoresSafeArea()
                     .shadow(color: tint.opacity(0.2), radius: 5, x: 0, y: -0.5)
@@ -111,7 +117,8 @@ struct TabItem: View {
     var tab: Tab
     var animation : Namespace.ID
     @Binding var activeTab: Tab
-    
+    @Binding var position: CGPoint
+    @State private var tabPosition : CGPoint = .zero
     var body: some View {
         VStack(spacing: 5) {
             Image(systemName: tab.systemImage)
@@ -132,8 +139,21 @@ struct TabItem: View {
         }
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
+        .viewPosition(completion: { rect in
+            
+            tabPosition.x = rect.midX
+            
+            if activeTab == tab {
+                position.x = rect.midX
+            }
+            
+        })
         .onTapGesture {
             activeTab = tab
+            
+            withAnimation(.interactiveSpring(response: 0.6, dampingFraction: 0.7, blendDuration: 0.7)) {
+                position.x = tabPosition.x
+            }
         }
     }
 }
