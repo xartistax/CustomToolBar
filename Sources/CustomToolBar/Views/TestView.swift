@@ -7,21 +7,24 @@
 
 import SwiftUI
 
+
+@available(iOS 17.0, *)
 struct SwiftUIView: View {
-    @available(iOS 13.0.0, *)
+    @available(iOS 17.0, *)
     var body: some View {
-        CustomToolBar(
-            toolBarContent: [
-                CustomToolBarItem(title: "Home", icon : "house"),
-                CustomToolBarItem(title: "Settings", icon : "line.3.horizontal.decrease.circle"),
-                CustomToolBarItem(title: "Profile", icon : "person"),
-                CustomToolBarItem(title: "Share", icon : "square.and.arrow.up")
-            ]
-        )
+        VStack {
+            
+                CustomToolBar()
+                .preferredColorScheme(.light)
+           
+        }
     }
 }
 
+
+@available(iOS 17.0, *)
 #Preview {
     SwiftUIView()
 }
   
+ 
