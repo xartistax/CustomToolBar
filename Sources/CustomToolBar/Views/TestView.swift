@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct SwiftUIView: View {
+    @available(iOS 13.0.0, *)
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        CustomToolBar(
+            toolBarContent: [
+                CustomToolBarItem(title: "Home", icon : "house"),
+                CustomToolBarItem(title: "Settings", icon : "line.3.horizontal.decrease.circle"),
+                CustomToolBarItem(title: "Profile", icon : "person"),
+                CustomToolBarItem(title: "Share", icon : "square.and.arrow.up")
+            ]
+        )
     }
 }
 
 #Preview {
     SwiftUIView()
 }
+  
